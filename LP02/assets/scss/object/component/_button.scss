@@ -1,0 +1,19 @@
+@use "../../foundation/color" as color;
+
+.c-button {
+    display: inline-block;
+    padding-top: 9.4px;
+    padding-bottom: 8.5px;
+    color: color.$c-link;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #5dc1cf;
+    &--full-width {
+        display: block;
+        width: 100%;
+    }
+    &--large {
+        padding-top: 15.4px;
+        padding-bottom: 12.6px;
+    }
+}

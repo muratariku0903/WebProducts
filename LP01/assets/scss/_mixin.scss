@@ -1,0 +1,200 @@
+@charset 'UTF-8';
+
+@mixin media($breakpoint) {
+    @media (max-width:#{map-get($breakpoints, $breakpoint)}) {
+        @content;
+    }
+}
+
+@mixin set_padding($dire, $sp: 2, $tablet: 4, $pc: 6, $default: 6) {
+    @include media(sp) {
+        padding-#{$dire}: $pc * $padding;
+    }
+    @include media(tablet) {
+        padding-#{$dire}: $tablet * $padding;
+    }
+    @include media(pc) {
+        padding-#{$dire}: $sp * $padding;
+    }
+    padding-#{$dire}: $default * $padding;
+}
+
+@mixin set_padding_X($sp: 2, $tablet: 4, $pc: 6, $default: 6) {
+    @include set_padding("left", $sp, $tablet, $pc, $default);
+    @include set_padding("right", $sp, $tablet, $pc, $default);
+}
+
+@mixin set_padding_Y($sp: 2, $tablet: 4, $pc: 6, $default: 6) {
+    @include set_padding("top", $sp, $tablet, $pc, $default);
+    @include set_padding("bottom", $sp, $tablet, $pc, $default);
+}
+
+@mixin set_padding_XY($sp: 2, $tablet: 4, $pc: 6, $default: 6) {
+    @include set_padding_X($sp, $tablet, $pc, $default);
+    @include set_padding_Y($sp, $tablet, $pc, $default);
+}
+
+@mixin set_margin($dire, $sp: 1, $tablet: 4, $pc: 6, $default: 6) {
+    @include media(pc) {
+        margin-#{$dire}: $pc * $margin;
+    }
+    @include media(tablet) {
+        margin-#{$dire}: $tablet * $margin;
+    }
+    @include media(sp) {
+        margin-#{$dire}: $sp * $margin;
+    }
+    margin-#{$dire}: $default * $margin;
+}
+
+@mixin set_margin_X($sp: 1, $tablet: 4, $pc: 6, $default: 6) {
+    @include set_margin("left", $sp, $tablet, $pc, $default);
+    @include set_margin("right", $sp, $tablet, $pc, $default);
+}
+
+@mixin set_marginX_auto() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin set_marginY_auto() {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+@mixin font_size($sp: 15px, $tablet: 17px, $pc: 20px, $default: 24px) {
+    @include media(pc) {
+        font-size: $pc;
+    }
+    @include media(tablet) {
+        font-size: $tablet;
+    }
+    @include media(sp) {
+        font-size: $sp;
+    }
+    font-size: $default;
+}
+
+@mixin set_width($sp: 200px, $tablet: 400px, $pc: $container-width-pc, $default: $container-width) {
+    @include media(pc) {
+        width: $pc;
+    }
+    @include media(tablet) {
+        width: $tablet;
+    }
+    @include media(sp) {
+        width: $sp;
+    }
+    width: $default;
+}
+
+@mixin set_height(
+    $sp: $header-height-sp,
+    $tablet: $header-height-tablet,
+    $pc: $header-height,
+    $default: $header-height
+) {
+    @include media(pc) {
+        height: $pc;
+    }
+    @include media(tablet) {
+        height: $tablet;
+    }
+    @include media(sp) {
+        height: $sp;
+    }
+    height: $default;
+}
+@mixin set_size_square(
+    $sp: $header-height-sp,
+    $tablet: $header-height-tablet,
+    $pc: $header-height,
+    $default: $header-height
+) {
+    @include set_width($sp, $tablet, $pc, $default);
+    @include set_height($sp, $tablet, $pc, $default);
+}
+
+@mixin set_line_height(
+    $sp: $header-height-sp,
+    $tablet: $header-height-tablet,
+    $pc: $header-height,
+    $default: $header-height
+) {
+    @include media(pc) {
+        line-height: $pc;
+    }
+    @include media(tablet) {
+        line-height: $tablet;
+    }
+    @include media(sp) {
+        line-height: $sp;
+    }
+    line-height: $default;
+}
+
+@mixin set_position($dire, $sp: static, $tablet: static, $pc: static, $default: static) {
+    @include media(pc) {
+        #{$dire}: $pc;
+    }
+    @include media(tablet) {
+        #{$dire}: $tablet;
+    }
+    @include media(sp) {
+        #{$dire}: $sp;
+    }
+    #{$dire}: $default;
+}
+
+@mixin set_position_absolute(
+    $position: absolute,
+    $top: initial,
+    $left: initial,
+    $bottom: initial,
+    $right: initial,
+    $center: "false"
+) {
+    position: $position;
+    content: "";
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    @if $center == "xy" {
+        transform: translate(-50%, -50%);
+    } @else if $center == "x" {
+        transform: translate(-50%, 0);
+    } @else if $center == "y" {
+        transform: translate(0, -50%);
+    }
+}
+
+@mixin close_btn($size, $weight: 2px, $color: $black, $bg_color: rgba(0, 0, 0, 0)) {
+    position: relative;
+    @include set_size_square($size, $size, $size, $size);
+    background-color: $bg_color;
+    &::before,
+    &::after {
+        @include set_position_absolute($top: 50%, $left: 0, $center: "y");
+        width: 100%;
+        height: $weight;
+        cursor: pointer;
+        background-color: $color;
+    }
+    &::before {
+        transform: rotate(-45deg);
+    }
+    &::after {
+        transform: rotate(45deg);
+    }
+}
+
+@mixin dark_filter($position, $color: $black, $rate: 0.4) {
+    &::#{$position} {
+        display: block;
+        @include set_position_absolute($top: 0, $left: 0);
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color, $rate);
+    }
+}

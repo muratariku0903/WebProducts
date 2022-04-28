@@ -1,0 +1,286 @@
+@use "../../foundation/mixin" as mixin;
+@use "../../foundation/variable" as var;
+@use "../../foundation/color" as color;
+
+.p-index-hero {
+    position: relative;
+    height: 600px;
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    &__inner {
+        @include mixin.posCenter("x");
+        @include mixin.rProp(width, $sp: 600px, $pc: 1100px);
+        height: 100%;
+        @include mixin.rProp(
+            background-image,
+            $sp: url("/assets/images/main-sp.jpg"),
+            $pc: url("/assets/images/main.jpg")
+        );
+        @include mixin.rProp(background-position, $sp: center, $pc: top);
+        background-size: 100%;
+    }
+}
+
+.p-index-contact {
+    @include mixin.rProp(margin-top, $sp: 40px, $pc: 50px);
+    &__inner__title {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 18px;
+        color: color.$c-primary;
+    }
+    &__inner__title__sub {
+        font-size: 12px;
+    }
+    &__inner__title__sub__icon {
+        margin-right: 4px;
+        vertical-align: middle;
+    }
+    &__inner__timeTable {
+        width: 100%;
+        @include mixin.rProp(margin-top, $sp: 13px, $pc: 13.8px);
+        text-align: center;
+        th,
+        td {
+            height: 39px;
+            font-size: 12px;
+            vertical-align: middle;
+            border: var.$table-border;
+        }
+    }
+}
+
+.p-index-hairstyle {
+    @include mixin.rProp(margin-top, $sp: 20px, $pc: 48px);
+    &__inner {
+        width: 100%;
+    }
+    &__inner__img {
+        @include mixin.rProp(height, $sp: 250px, $pc: 486px);
+        margin-top: 19px;
+        @include mixin.rProp(margin-right, $sp: calc(50% - 50vw), $pc: 0);
+        @include mixin.rProp(margin-left, $sp: calc(50% - 50vw), $pc: 0);
+        @include mixin.rProp(
+            background-image,
+            $sp: url("/assets/images/hair-style-sp.jpg"),
+            $pc: url("/assets/images/hair_style.jpg")
+        );
+        background-position: center;
+    }
+    &__inner__btnWrapper {
+        margin-top: 16px;
+    }
+    &__inner__btnWrapper__btn {
+        display: block;
+        @include mixin.rProp(width, $sp: 100%, $pc: 343px);
+        margin: 0 auto;
+        padding: 17px 0;
+        font-size: 14px;
+        text-align: center;
+        border: solid 2px #5dc1cf;
+    }
+    &__inner__btnWrapper__btn__icon {
+        font-size: 23px;
+        vertical-align: middle;
+    }
+}
+
+.p-index-news {
+    @include mixin.rProp(margin-top, $sp: 22px, $pc: 50px);
+    &__inner__newsContents__newsList__item {
+        position: relative;
+        margin-top: 21px;
+        padding: 19px 0;
+        border-bottom: 1px solid #eeeeee;
+    }
+    &__inner__newsContents__newsList__item__time {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 12px;
+    }
+    &__inner__newsContents__newsList__item__text {
+        font-size: 13.78px;
+    }
+    &__inner__newsContents__linkWrapper {
+        margin-top: 19px;
+        text-align: right;
+    }
+}
+
+.p-index-coupon {
+    position: relative;
+    @include mixin.rProp(height, $sp: 530px, $pc: 338px);
+    @include mixin.rProp(margin-top, $sp: 21px, $pc: 49px);
+    &::after {
+        display: block;
+        content: "";
+        top: 0;
+        @include mixin.posCenter("x");
+        width: 100vw;
+        height: 100%;
+        background-color: #f0f0f0;
+        z-index: -1;
+    }
+    &__inner {
+        height: 100%;
+    }
+    &__inner__text {
+        position: relative;
+        text-align: center;
+        font-size: 16px;
+        @include mixin.rProp(margin-top, $sp: 18px, $pc: 34px);
+    }
+    &__inner__couponContents {
+        @include mixin.rProp(margin-top, $sp: 17px, $pc: 28px);
+    }
+    &__inner__couponContents__couponList {
+        @include mixin.rProp(display, $pc: flex);
+        @include mixin.rProp(justify-content, $pc: space-between);
+    }
+    &__inner__couponContents__couponList__item {
+        position: relative;
+        @include mixin.rProp(width, $sp: 100%, $pc: 209px);
+        @include mixin.rProp(height, $pc: 176px);
+        @include mixin.rProp(min-height, $sp: 122px);
+        @include mixin.rPaddingY($sp: 13px, $pc: 13px);
+        @include mixin.rPaddingX($sp: 10px, $pc: 12px);
+        border-radius: 10px;
+        background-color: white;
+        &:not(:last-child) {
+            @include mixin.rProp(margin-bottom, $sp: 12px, $pc: 0);
+        }
+    }
+    &__inner__couponContents__couponList__item__sub {
+        font-size: 12px;
+    }
+    &__inner__couponContents__couponList__item__main {
+        margin-top: 7px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    &__inner__couponContents__couponList__item__price {
+        @include mixin.rProp(margin-top, $pc: 12px);
+        @include mixin.rProp(margin-bottom, $sp: 43px);
+        font-size: 14px;
+    }
+    &__inner__couponContents__couponList__item__btnWrapper {
+        @include mixin.posCenter("x");
+        @include mixin.rProp(bottom, $sp: 12px, $pc: 13px);
+        @include mixin.rProp(width, $sp: 198px, $pc: 155px);
+        font-size: 14px;
+    }
+    &__inner__couponContents__linkWrapper {
+        margin-top: 35px;
+        text-align: right;
+        a:not(:last-child) {
+            @include mixin.rProp(margin-right, $sp: 18px, $pc: 22px);
+        }
+    }
+}
+
+.p-index-voice {
+    @include mixin.rProp(margin-top, $sp: 40px, $pc: 60px);
+    &__inner {
+        @include mixin.rProp(display, $pc: flex);
+        @include mixin.rProp(justify-content, $pc: space-between);
+    }
+    &__inner__img:not(:last-child) {
+        @include mixin.rProp(margin-bottom, $sp: 20px, $pc: 0);
+    }
+}
+
+.p-index-staff {
+    @include mixin.rProp(margin-top, $sp: 20px, $pc: 60px);
+    &__inner {
+        @include mixin.rProp(width, $sp: 100%, $pc: 344px);
+        @include mixin.marginAutoX();
+    }
+    &__inner__img {
+        width: 100%;
+        height: 118.14px;
+        margin-top: 15px;
+        background-image: url("/assets/images/staff.jpg");
+    }
+    &__inner__btnWrapper {
+        @include mixin.rProp(margin-top, $sp: 13px, $pc: 20px);
+    }
+    &__inner__btnWrapper__btn {
+        display: block;
+        width: 100%;
+        padding-top: 11.7px;
+        padding-bottom: 9.3px;
+        text-align: center;
+        border: #323232 solid 1px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+}
+
+.p-index-access {
+    @include mixin.rProp(margin-top, $sp: 20px, $pc: 48px);
+    &__inner__title {
+        text-align: center;
+    }
+    &__inner__title__sub {
+        margin-top: 13px;
+        font-size: 12px;
+    }
+    &__inner__img {
+        @include mixin.rProp(width, $sp: 200px, $pc: 343px);
+        @include mixin.rProp(height, $sp: 200px, $pc: 343px);
+        margin-top: 19px;
+        @include mixin.marginAutoX();
+        font-size: 12px;
+        @include mixin.rProp(
+            background-image,
+            $sp: url("/assets/images/access-forest-sp.jpg"),
+            $pc: url("/assets/images/access-forest.jpg")
+        );
+    }
+    &__inner__desc {
+        @include mixin.rProp(margin-top, $sp: 16px, $pc: 19px);
+        text-align: center;
+    }
+    &__inner__desc__address {
+        @include mixin.rProp(line-height, $sp: 22px, $pc: 24.5px);
+        font-size: 14px;
+    }
+    &__inner__desc__contact {
+        @include mixin.rProp(margin-top, $sp: 21px, $pc: 19px);
+        a {
+            font-size: 14px;
+            color: color.$c-accent-lightblue;
+        }
+    }
+    &__inner__desc__tel {
+        margin-top: 19px;
+        line-height: 17px;
+    }
+    &__inner__desc__tel__main {
+        font-size: 14px;
+    }
+    &__inner__desc__tel__main__icon {
+        margin-right: 4px;
+    }
+    &__inner__desc__tel__time {
+        font-size: 11px;
+    }
+    &__inner__desc__sns {
+        margin-top: 9px;
+    }
+    &__inner__desc__sns__icon {
+        font-size: 23px;
+    }
+}
+
+.p-index-underNav {
+    @include mixin.rProp(margin-top, $sp: 42px, $pc: 50px);
+    @include mixin.rProp(margin-bottom, $sp: 41px, $pc: 61px);
+    &__inner__nav {
+        text-align: center;
+        font-size: 14px;
+        line-height: 24.5px;
+    }
+}

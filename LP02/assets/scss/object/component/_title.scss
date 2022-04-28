@@ -1,0 +1,18 @@
+@use "../../foundation/color" as color;
+
+.c-title {
+    padding-left: 4px;
+    color: color.$c-primary;
+    font-size: 14px;
+    border-left: 4px solid color.$c-primary;
+}
+
+.c-title-eng {
+    text-align: center;
+    &__main {
+        font-size: 34px;
+    }
+    &__sub {
+        font-size: 12px;
+    }
+}

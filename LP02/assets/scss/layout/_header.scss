@@ -1,0 +1,110 @@
+@use "../foundation/variable" as var;
+@use "../foundation/color" as color;
+@use "../foundation/mixin" as mixin;
+
+.l-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: map-get(var.$zIndexes, header);
+    &__inner {
+        position: relative;
+        display: flex;
+        @include mixin.rProp(width, $sp: 363px, $pc: 1073px);
+        @include mixin.rProp(height, $sp: 63px, $pc: 113px);
+        @include mixin.marginAutoX();
+    }
+    &__inner__logo {
+        position: absolute;
+        bottom: 0;
+    }
+    &__inner__logo__link {
+        display: block;
+    }
+    &__inner__logo__link__img {
+        @include mixin.rProp(width, $sp: 160px, $pc: 297px);
+        @include mixin.rProp(height, $sp: 48px, $pc: 89px);
+    }
+    &__inner__menu {
+        position: absolute;
+        @include mixin.rProp(right, $sp: max(calc(50% - 300px), calc(50% - 50vw)), $pc: -13px);
+    }
+    &__inner__menu__btn {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background-color: var.$header-menu-btn-color;
+        z-index: map-get(var.$zIndexes, headerMenuBtn);
+        span {
+            display: inline-block;
+            @include mixin.posCenter("x");
+            width: 21px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.4s;
+            &:nth-of-type(1) {
+                top: 22.5px;
+            }
+            &:nth-of-type(2) {
+                top: 30px;
+            }
+            &:nth-of-type(3) {
+                top: 37px;
+            }
+        }
+    }
+    &__drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include mixin.rProp(right, $sp: max(calc(50% - 300px), calc(50% - 50vw)), $pc: calc(50% - 550px));
+        @include mixin.rProp(width, $sp: min(100%, 600px), $pc: 236px);
+        @include mixin.rProp(height, $sp: 600px, $pc: 426px);
+        background-color: rgba(#323232, $alpha: 0.4);
+        backdrop-filter: blur(12px);
+    }
+    &__drawer__inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    &__drawer__inner__btnWrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &__drawer__inner__btnWrapper__closeBtn {
+        width: 60px;
+        height: 60px;
+        background-color: var.$header-menu-btn-color;
+        backdrop-filter: blur(12px);
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 21px;
+            height: 2px;
+            background: #fff;
+        }
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+    &__drawer__inner__menu {
+        @include mixin.posCenter();
+    }
+    &__drawer__inner__menu__list__item {
+        @include mixin.rProp(margin-bottom, $sp: 44px, $pc: 35px);
+        text-align: center;
+        a {
+            color: color.$c-link;
+            @include mixin.rProp(font-size, $sp: 24px, $pc: 18px);
+            font-weight: bold;
+        }
+    }
+}

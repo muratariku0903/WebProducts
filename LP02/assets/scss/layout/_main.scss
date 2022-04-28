@@ -1,0 +1,10 @@
+@use "../foundation/variable" as var;
+@use "../foundation/color" as color;
+@use "../foundation/mixin" as mixin;
+
+.l-main {
+    &__inner {
+        @include mixin.rProp(width, $sp: var.$inner-width-sp, $pc: var.$inner-width-pc);
+        margin: 0 auto;
+    }
+}

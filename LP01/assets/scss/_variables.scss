@@ -1,0 +1,50 @@
+@charset 'UTF-8';
+
+// 色 
+$white: #f3f3f5;
+$gray: #e5e5e5;
+$black: #333;
+$red: #d7003a;
+
+// フォント 
+$jpn-font-family: "Noto Sans JP";
+$eng-font-family: "Lato";
+$nav-font-family: "Noto Sans";
+$date-font-family: "Lato";
+
+// 要素の大きさ 
+// コンテナ幅 
+$container-width: 1000px;
+$container-width-pc: 800px;
+$container-width-tablet: 500px;
+$container-width-sp: 100%;
+// ヘッダーの高さ 
+$header-height: 100px;
+$header-height-pc: 100px;
+$header-height-tablet: 75px;
+$header-height-sp: 50px;
+// フッターの高さ 
+$footer-height: 85px;
+$footer-height-pc: 85px;
+$footer-height-tablet: 60px;
+$footer-height-sp: 50px;
+
+// z-index 
+$entrance-modal-z-index: 10000;
+$header-btn-z-index: 9999;
+$header-toggle-nav-z-index: 9998;
+$header-z-index: 999;
+$header-drawer-z-index: 999;
+$modal-z-index: 999;
+$qa-btn-z-index: 100;
+
+// 余白 
+$margin: 8px;
+$padding: 8px;
+
+// ブレイクポイント 
+$breakpoints: (
+    sp: 500px,
+    tablet: 800px,
+    pc: 1024px,
+);

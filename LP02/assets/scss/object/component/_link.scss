@@ -1,0 +1,6 @@
+@use "../../foundation/color" as color;
+
+.c-link {
+    color: color.$c-accent-lightblue;
+    font-size: 14px;
+}

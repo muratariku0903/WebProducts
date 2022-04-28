@@ -1,0 +1,427 @@
+/* entrance-modal*/
+.entrance-modal {
+    @include set_position_absolute($position: fixed, $top: 0, $left: 0);
+    width: 100vw;
+    height: 100vh;
+    z-index: $entrance-modal-z-index;
+    overflow: hidden;
+    @include dark_filter($position: after);
+}
+.entrance-modal-btn-box {
+    @include set_position_absolute($top: 5%, $right: 5%);
+    z-index: $entrance-modal-z-index + 1;
+}
+.entrance-modal-close-btn {
+    @include close_btn($size: 40px, $color: $white);
+}
+.entrance-modal-text-box {
+    @include set_position_absolute($top: 50%, $left: 50%, $center: "xy");
+    @include set_width($sp: $container-width-sp);
+    @include set_padding_X(2, 0, 0, 0);
+    z-index: $entrance-modal-z-index + 1;
+}
+.entrance-modal-video {
+    @include set_position_absolute($top: 50%, $left: 50%, $center: "xy");
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* header */
+.header {
+    @include set_position_absolute($top: 0px, $left: 0px);
+    width: 100%;
+    @include set_height();
+    background-color: $white;
+    z-index: $header-z-index;
+}
+.header-flex-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.header-flex-item:last-child {
+    margin-left: auto;
+}
+.header-logo {
+    @include set_margin("right", 1, 3, 5, 9);
+    img {
+        @include set_width(100px, 140px, 234px, 234px);
+        height: auto;
+    }
+}
+.header-nav-ul {
+    display: flex;
+}
+.header-nav-item {
+    @include set_height();
+    @include set_margin("right");
+    @include font-size(9px, 12px, 14px, 16px);
+    @include set_line_height();
+}
+.header-nav-item-span {
+    color: $red;
+    font-weight: bold;
+    font-family: $nav-font-family;
+}
+.header-drawer-menu-box {
+    display: none;
+    @include set_position_absolute($left: 0);
+    width: 100%;
+    @include set_height();
+    background-color: $red;
+    z-index: $header-drawer-z-index;
+}
+.header-drawer-detail-ul {
+    display: flex;
+    @include set_width($sp: 300px);
+    height: 100%;
+    align-items: center;
+    @include set_marginX_auto();
+    li {
+        @include set_margin("right", 1);
+        a {
+            font-weight: bold;
+            color: $white;
+            @include font_size(6px, 10px, 16px, 16px);
+        }
+    }
+}
+.header-btn {
+    @include set_height($sp: 100%, $tablet: static, $pc: static, $default: static);
+}
+.header-btn-icon {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    @include set_width($sp: 30px, $tablet: 50px, $pc: 50px, $default: 50px);
+    @include set_height($sp: 100%, $tablet: 50px, $pc: 50px, $default: 50px);
+    background-color: rgba(0, 0, 0, 0);
+    z-index: $header-btn-z-index;
+    span {
+        display: inline-block;
+        @include set_position_absolute($left: 50%, $center: "x");
+        @include set_width($sp: 60%, $tablet: 45%, $pc: 45%, $default: 45%);
+        height: 3px;
+        border-radius: 2px;
+        background-color: $red;
+        transition: all 0.4s;
+        @for $i from 1 through 3 {
+            &:nth-of-type(#{$i}) {
+                top: 8px * $i + 7px;
+            }
+        }
+    }
+}
+.header-btn-icon[aria-expanded="true"] {
+    span {
+        background-color: $white;
+        &:nth-of-type(1) {
+            top: 18px;
+            @include set_position(left, $sp: 5%, $tablet: 18px, $pc: 18px, $default: 18px);
+            transform: translateY(6px) rotate(-45deg);
+            width: 40%;
+        }
+        &:nth-of-type(2) {
+            opacity: 0;
+        }
+        &:nth-of-type(3) {
+            top: 30px;
+            @include set_position(left, $sp: 5%, $tablet: 18px, $pc: 18px, $default: 18px);
+            transform: translateY(-6px) rotate(45deg);
+            width: 40%;
+        }
+    }
+}
+.header-toggel-nav-box {
+    display: none;
+    @include set_position_absolute($top: 0, $left: 0);
+    width: 100%;
+    @include set_height(100vh, 300px, 375px, 375px);
+    background-color: $red;
+    z-index: $header-toggle-nav-z-index;
+}
+.header-toggle-nav-ul {
+    @include set_margin("top", 7.2, 10.8, 13.5, 13.5);
+    @include set_padding("left", 2, 0, 0, 0);
+    li {
+        @include set_margin("bottom", 4, 2, 3, 3);
+        @include font-size(20px, 12px, 14px, 16px);
+        a {
+            color: $white;
+            font-weight: bold;
+        }
+    }
+}
+
+/* main */
+.main-full {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-image: url("../images/slide_1.jpg");
+    transition: all 0.5s 0s ease;
+    @include dark_filter($position: before);
+}
+.main-text-box {
+    @include set_position_absolute($top: 50%, $left: 50%, $center: "xy");
+    @include set_width($container-width-sp, 400px, 800px, $container-width);
+    @include set_padding_X(2, 0, 0, 0);
+}
+.slide-btn-box {
+    width: 100%;
+    @include set_position_absolute($bottom: 0);
+    @include set_height($header-height-sp, $header-height-tablet, $header-height, $header-height);
+    background-color: $white;
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        li {
+            @include set_margin_X(1.5, 1.5, 2, 2.5);
+        }
+    }
+}
+.slide-btn {
+    display: block;
+    width: 14px;
+    height: 14px;
+    color: $gray;
+    background-color: $gray;
+    border: none;
+    border-radius: 7px;
+}
+.slide-btn[aria-checked="true"] {
+    color: $red;
+    background-color: $red;
+    cursor: default;
+}
+
+/* about */
+.about-p {
+    @include font_size(15px, 20px, 24px, 24px);
+    line-height: 2.5;
+}
+
+/* news */
+.news {
+    background-color: $gray;
+}
+.news-tab-menus-ul {
+    display: flex;
+    justify-content: space-between;
+    li {
+        text-align: center;
+        @include set_width(150px, 200px, 480px, 480px);
+        button {
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: $white;
+            font-family: $jpn-font-family;
+            background-color: $red;
+            @include set_padding_Y(2.5, 2.5, 2.5, 2.5);
+            @include font_size(12px, 16px, 24px, 24px);
+        }
+    }
+}
+.news-tab-contents {
+    border: 24px solid $red;
+    background-color: $white;
+}
+.news-item-box {
+    @include set_padding_X(4, 4, 4, 4);
+    @include set_padding("bottom", 4.6, 4.6, 4.6, 4.6);
+}
+.news-item {
+    @include font_size(12px, 16px, 16px, 16px);
+    @include set_padding_Y(2.5, 3.375, 3.375, 3.375);
+    border-bottom: 1px solid $gray;
+    time {
+        font-family: $date-font-family;
+        @include set_margin("right", 3, 3, 3, 3);
+    }
+}
+
+/* faq */
+.qa {
+    border: 1px solid $red;
+    margin-top: 0;
+    @include set_margin("bottom", 3, 3, 3, 3);
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.qa-title,
+.qa-answer {
+    font-weight: medium;
+    @include set_padding_X(13.5, 13.5, 13.5, 13.5);
+    @include set_padding_Y(4, 4, 4, 4);
+}
+.qa-title {
+    position: relative;
+    transition: all 0.2s ease;
+    color: $red;
+}
+.qa-btn-box {
+    @include set_position_absolute($top: 50%, $right: 4%, $center: "y");
+    @include set_size_square(30px, 30px, 30px, 30px);
+    .qa-btn {
+        position: relative;
+        @include set_size_square(100%, 100%, 100%, 100%);
+        background-color: rgba(0, 0, 0, 0);
+        &::before,
+        &::after {
+            @include set_position_absolute($left: 0);
+            width: inherit;
+            height: 2px;
+            background-color: $red;
+            transition: all 0.2s ease;
+        }
+        &::after {
+            transform: rotate(90deg);
+        }
+    }
+}
+.qa-title.open {
+    background-color: $red;
+    color: $white;
+    .qa-btn-box .qa-btn {
+        &::before,
+        &::after {
+            background-color: $white;
+        }
+        &::before {
+            transform: rotate(-45deg);
+        }
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+}
+.qa-answer {
+    display: none;
+    position: relative;
+    margin: 0;
+}
+.qa-icon-q,
+.qa-icon-a {
+    @include set_position_absolute($left: 4%, $top: 50%, $center: "y");
+    @include set_size_square(44px, 44px, 44px, 44px);
+    border: 1px solid $red;
+    background-position: 50%, 50%;
+    border-radius: 50%;
+}
+.qa-icon-q {
+    background-image: url("../images/Q.svg");
+    background-color: $white;
+}
+.qa-icon-a {
+    background-image: url("../images/A.svg");
+    background-color: $red;
+}
+
+/* contact */
+.contact {
+    background-color: $gray;
+}
+.contact-box {
+    text-align: center;
+}
+.contact-btn {
+    @include set_height();
+    @include set_width(100%, 100%, 496px, 496px);
+    color: $white;
+    background-color: $red;
+    font-family: $jpn-font-family;
+    @include font_size();
+}
+.contact-modal-box {
+    @include set_position_absolute($position: fixed, $top: 0, $left: 0);
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: $modal-z-index;
+}
+.contact-modal-wrapper {
+    @include set_position_absolute($top: 50%, $left: 50%, $center: "xy");
+    @include set_width($sp: 90%, $tablet: $container-width-tablet);
+    min-height: auto;
+    max-height: calc(100vh - 60px);
+    @include set_padding_X(5, 6, 7, 7);
+    background-color: $white;
+    overflow-y: scroll;
+    //　縦余白をpaddingで設定しないのは、firefoxだとoverflowで縦paddingが消されるから
+    &::after,
+    &::before {
+        content: "";
+        display: block;
+        @include set_height(64px, 80px, 96px, 96px);
+    }
+}
+.contact-modal-form-box,
+.contact-modal-finish-box {
+    position: relative;
+}
+.contact-modal-close-btn-box {
+    @include set_position_absolute($top: -30px, $right: 0);
+    @include set_size_square(30px, 30px, 30px, 30px);
+    cursor: pointer;
+}
+.contact-modal-close-btn {
+    @include close_btn($size: 30px);
+}
+.contact-modal-form-title {
+    @extend .section-title;
+    color: $black;
+    font-family: $jpn-font-family;
+}
+.contact-modal-finish-box {
+    display: none;
+}
+.contact-modal-content {
+    label,
+    input {
+        display: block;
+    }
+    label {
+        text-align: left;
+        font-family: $jpn-font-family;
+        @include font_size(12px, 16px, 24px, 24px);
+        @include set_margin("bottom", 1, 3, 3, 3);
+    }
+    input,
+    textarea {
+        width: 100%;
+        border: 1px solid $gray;
+        @include set_padding_XY(3, 3, 3, 3);
+    }
+    .form-submit-btn {
+        @extend .contact-btn;
+        @include set_width(100%, 100%, 100%, 100%);
+    }
+}
+.modal-finish-p {
+    font-weight: 100;
+    @include font_size();
+    @include set_margin("bottom", 7, 7, 7, 7);
+}
+.form-close-btn {
+    @extend .contact-btn;
+    @include set_width(100%, 100%, 480px, 480px);
+}
+
+/* footer */
+.footer {
+    display: flex;
+    align-items: center;
+    @include set_height($tablet: $footer-height-tablet, $pc: $footer-height-pc, $default: $footer-height);
+    background-color: $black;
+}
+.copyright {
+    color: $white;
+    @include set_marginX_auto();
+    @include font_size(8px, 12px, 16px, 16px);
+}

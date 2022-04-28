@@ -1,0 +1,67 @@
+body {
+    background-color: $white;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+p {
+    font-family: $jpn-font-family;
+    font-weight: bold;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+button {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.container {
+    @include set_marginX_auto();
+    @include set_width($container-width-sp, $container-width-tablet, $container-width-pc, $container-width);
+    height: 100%;
+}
+
+.section-container {
+    @extend .container;
+    @include set_padding("top", 9, 10, 12, 12);
+    @include set_padding("bottom", 4, 6, 6, 12);
+    @include set_padding_X(2, 0, 0, 0);
+}
+
+.section-title {
+    margin: 0;
+    text-align: center;
+    @include font_size(20px, 20px, 32px, 32px);
+    @include set_padding("bottom", 2, 6, 6, 6);
+    color: $red;
+    font-family: $eng-font-family;
+}
+
+.form-group {
+    @include set_margin("bottom", 1, 3, 3, 3);
+}
+
+.display-none {
+    display: none;
+}
+
+.main-text {
+    color: $white;
+    line-height: 2.5;
+    @include font-size();
+}
+
+.fixed {
+    position: fixed;
+}

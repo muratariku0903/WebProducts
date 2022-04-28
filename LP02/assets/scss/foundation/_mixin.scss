@@ -1,0 +1,53 @@
+$breakpoints: (
+    pc: 1100px,
+    sp: 375px,
+);
+
+@mixin mq($breakpoint) {
+    @media (min-width:#{map-get($breakpoints, $breakpoint)}) {
+        @content;
+    }
+}
+
+@mixin rProp($prop, $sp: null, $pc: null) {
+    @if $sp != null {
+        @include mq(sp) {
+            #{$prop}: $sp;
+        }
+    }
+    @if $pc != null {
+        @include mq(pc) {
+            #{$prop}: $pc;
+        }
+    }
+}
+
+@mixin posCenter($dire: "xy") {
+    position: absolute;
+    @if $dire == "x" {
+        left: 50%;
+        transform: translate(-50%, 0);
+    } @else if $dire == "y" {
+        top: 50%;
+        transform: translate(0, -50%);
+    } @else if $dire== "xy" {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@mixin rPaddingY($sp: null, $pc: null) {
+    @include rProp(padding-top, $sp, $pc);
+    @include rProp(padding-bottom, $sp, $pc);
+}
+
+@mixin rPaddingX($sp: null, $pc: null) {
+    @include rProp(padding-left, $sp, $pc);
+    @include rProp(padding-right, $sp, $pc);
+}
+
+@mixin marginAutoX() {
+    margin-left: auto;
+    margin-right: auto;
+}
