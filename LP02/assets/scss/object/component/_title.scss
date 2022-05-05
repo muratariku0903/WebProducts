@@ -1,4 +1,5 @@
 @use "../../foundation/color" as color;
+@use "../../foundation/font" as font;
 
 .c-title {
     padding-left: 4px;
@@ -10,9 +11,11 @@
 .c-title-eng {
     text-align: center;
     &__main {
+        font-family: font.$time-new-roman;
         font-size: 34px;
     }
     &__sub {
+        font-family: font.$map-roman;
         font-size: 12px;
     }
 }
