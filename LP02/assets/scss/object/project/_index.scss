@@ -57,6 +57,11 @@
         margin-top: 19px;
         @include mixin.rProp(margin-right, $sp: calc(50% - 50vw), $pc: 0);
         @include mixin.rProp(margin-left, $sp: calc(50% - 50vw), $pc: 0);
+        text-align: center;
+        img {
+            width: auto;
+            height: 100%;
+        }
     }
     &__inner__btnWrapper {
         margin-top: 16px;

@@ -575,6 +575,7 @@ table {
 }
 .p-index-hairstyle__inner__img {
   margin-top: 19px;
+  text-align: center;
 }
 @media (min-width: 375px) {
   .p-index-hairstyle__inner__img {
@@ -605,6 +606,10 @@ table {
   .p-index-hairstyle__inner__img {
     margin-left: 0;
   }
+}
+.p-index-hairstyle__inner__img img {
+  width: auto;
+  height: 100%;
 }
 .p-index-hairstyle__inner__btnWrapper {
   margin-top: 16px;
