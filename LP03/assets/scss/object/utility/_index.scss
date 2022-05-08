@@ -1,1 +1,20 @@
-write something
+@use "../../foundation/color" as color;
+@use "../../foundation/mixin" as mixin;
+
+.u-vertical-align-middle {
+    vertical-align: middle;
+}
+
+.u-display-none {
+    display: none;
+}
+
+.u-display-none-pc {
+    @include mixin.mq(pc) {
+        display: none;
+    }
+}
+
+.u-mt5 {
+    margin-top: 5px;
+}

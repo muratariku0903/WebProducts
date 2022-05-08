@@ -1,1 +1,69 @@
-write something
+@use "../foundation/variable" as var;
+@use "../foundation/mixin" as mixin;
+
+
+@include mixin.mq("sp") {
+    .l-header {
+        width: 100%;
+        height: 82px;
+        background-color: white;
+        &__inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: var.$inner-width-sp;
+            height: 100%;
+            @include mixin.marginAutoX();
+        }
+        &__title {
+            margin-top: 20px;
+        }
+        &__nav {
+            margin-top: 10px;
+        }
+        &__nav__list {
+            display: flex;
+        }
+        &__nav__list__item {
+            margin-right: 20px;
+            &:last-child {
+                margin-right: 0;
+            }
+            a {
+                font-size: 12.8px;
+            }
+        }
+    }
+}
+
+@include mixin.mq("pc") {
+    .l-header {
+        width: 100%;
+        height: 271px;
+        background-color: white;
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            max-width: var.$inner-width-pc;
+            height: 100%;
+            @include mixin.marginAutoX();
+        }
+        &__title {
+        }
+        &__nav {
+        }
+        &__nav__list {
+            display: flex;
+        }
+        &__nav__list__item {
+            &:last-child {
+                margin-right: 0;
+            }
+            a {
+                font-size: 14.4px;
+            }
+        }
+    }
+}

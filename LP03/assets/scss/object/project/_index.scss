@@ -1,1 +1,121 @@
-write something
+@use "../../foundation/variable" as var;
+@use "../../foundation/mixin" as mixin;
+@use "../../foundation/color" as color;
+
+.p-index-hero {
+    width: 100%;
+    height: 420px;
+    &__inner {
+        @include mixin.releaseMarginX();
+        height: 100%;
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.p-index-about {
+    margin-top: 80px;
+
+    &__inner {
+        @include mixin.rPaddingX($pc: 60px);
+    }
+
+    &__title_wrapper {
+        position: relative;
+        width: 70px;
+        @include mixin.marginAutoX();
+        @include mixin.squareBrackets($size: 15px, $color: color.$c-primary, $borderWidth: 2px, $y: -5px, $x: -10px);
+    }
+
+    &__description {
+        @include mixin.rProp(margin-top, $sp: 40px, $pc: 65px);
+    }
+
+    &__description__title {
+        font-size: 14.4px;
+    }
+
+    &__description__access {
+        margin-top: 30px;
+    }
+
+    &__description__profile {
+        margin-top: 30px;
+        font-size: 14.4px;
+    }
+}
+
+.p-index-works {
+    @include mixin.rProp(margin-top, $sp: 70px, $pc: 130px);
+
+    &__inner {
+        @include mixin.rPaddingX($pc: 60px);
+    }
+
+    &__list {
+        display: flex;
+        @include mixin.rProp(justify-content, $sp: center, $pc: space-between);
+        @include mixin.rProp(flex-direction, $sp: column, $pc: row);
+        flex-wrap: wrap;
+        row-gap: 23px;
+        @include mixin.rProp(margin-top, $sp: 40px, $pc: 0);
+    }
+
+    &__list__item {
+        @include mixin.rProp(width, $sp: 345px, $pc: 264px);
+        @include mixin.rProp(height, $sp: 225px, $pc: 172px);
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.p-index-contact {
+    @include mixin.rProp(margin-top, $sp: 70px, $pc: 222px);
+
+    &__inner {
+        @include mixin.rPaddingX($pc: 60px);
+    }
+
+    &__form_box {
+        @include mixin.rProp(margin-top, $sp: 40px, $pc: 65px);
+    }
+
+    &__form_box__form__item_box {
+        display: flex;
+        @include mixin.rProp(flex-direction, $sp: column, $pc: row);
+        justify-content: space-between;
+        margin-top: 10px;
+        &:first-child {
+            @include mixin.rProp(margin-top, $pc: 0);
+        }
+        label {
+            font-size: 14.4px;
+        }
+        input,
+        textarea {
+            width: 100%;
+            @include mixin.rProp(max-width, $pc: 723px);
+        }
+        input {
+            height: 44px;
+        }
+    }
+
+    &__btn_wrapper {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    &__btn_wrapper__btn {
+        position: relative;
+        width: 200px;
+        height: 45px;
+        background-color: #24292e;
+        color: white;
+        @include mixin.arrowBtn($x: calc(50% - 50px), $y: calc(50% - 5px), $under: 20px, $oblique: 10px, $color: white);
+    }
+}

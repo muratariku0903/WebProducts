@@ -1,1 +1,101 @@
-write something
+$breakpoints: (
+    pc: 600px,
+    sp: 375px,
+) !default;
+
+@mixin mq($breakpoint) {
+    @media (min-width:#{map-get($breakpoints, $breakpoint)}) {
+        @content;
+    }
+}
+
+@mixin rProp($prop, $sp: null, $pc: null) {
+    @if $sp != null {
+        @include mq(sp) {
+            #{$prop}: $sp;
+        }
+    }
+    @if $pc != null {
+        @include mq(pc) {
+            #{$prop}: $pc;
+        }
+    }
+}
+
+@mixin posCenter($dire: "xy") {
+    position: absolute;
+    @if $dire == "x" {
+        left: 50%;
+        transform: translate(-50%, 0);
+    } @else if $dire == "y" {
+        top: 50%;
+        transform: translate(0, -50%);
+    } @else if $dire== "xy" {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@mixin rPaddingY($sp: null, $pc: null) {
+    @include rProp(padding-top, $sp, $pc);
+    @include rProp(padding-bottom, $sp, $pc);
+}
+
+@mixin rPaddingX($sp: null, $pc: null) {
+    @include rProp(padding-left, $sp, $pc);
+    @include rProp(padding-right, $sp, $pc);
+}
+
+@mixin marginAutoX() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin releaseMarginX() {
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+}
+
+@mixin squareBrackets($size, $color, $borderWidth, $x: 0, $y: 0) {
+    &::after,
+    &::before {
+        position: absolute;
+        display: block;
+        content: "";
+        width: $size;
+        height: $size;
+    }
+    &::before {
+        top: $y;
+        left: $x;
+        border-top: $borderWidth solid $color;
+        border-left: $borderWidth solid $color;
+    }
+    &::after {
+        bottom: $y;
+        right: $x;
+        border-bottom: $borderWidth solid $color;
+        border-right: $borderWidth solid $color;
+    }
+}
+
+@mixin arrowBtn($x, $y, $thick: 2px, $under, $oblique, $color) {
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+        background: $color;
+        bottom: $y;
+        right: $x;
+        height: $thick;
+    }
+    &::before {
+        width: $under;
+    }
+    &::after {
+        width: $oblique;
+        transform-origin: 100% 0;
+        transform: rotate(35deg);
+    }
+}

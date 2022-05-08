@@ -1,1 +1,9 @@
-write something
+@use "../foundation/variable" as var;
+@use "../foundation/mixin" as mixin;
+
+.l-main {
+    &__inner {
+        @include mixin.rProp(max-width, $sp: var.$inner-width-sp, $pc: var.$inner-width-pc);
+        @include mixin.marginAutoX();
+    }
+}
