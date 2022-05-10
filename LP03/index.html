@@ -96,7 +96,13 @@
                         </ul>
                     </div>
                 </section>
-                <section class="p-index-contact">
+                <p class="tmp">
+                    display:inline-block;, float:left;, float:right;, position:absolute;などのプロパティと値が指定されたshrink-to-fit
+                    widthの場合は、幅（width）や最大幅（max-width）を明示してやれば良いだけです。width:auto;のために、その内容によって自身の幅が決められていたのを、width:100%;のように幅を決めることで、単語の途中で折り返さないと行ボックスの幅からあふれるかどうかを計算できるようになります。
+
+                    問題は自動レイアウトアルゴリズム（table-layout:auto;）を使用しているテーブルセル（display:table-cell;）の場合で、word-breakとword-wrap（overflow-wrap）のややこしさをより一層ややこしくしています。
+                </p>
+                <section class="p-index-contact" include="releaseMarginX()">
                     <div class="p-index-contact__inner">
                         <div class="p-index-contact__title_wrapper">
                             <h2 class="c-title">Contact</h2>
@@ -106,6 +112,18 @@
                                 <div class="p-index-contact__form_box__form__item_box">
                                     <label for="name">NAME</label>
                                     <input id="name" type="text">
+                                </div>
+                                <div class="p-index-contact__form_box__form__item_box">
+                                    <label for="category">CATEGORY</label>
+                                    <div class="p-index-contact__form_box__form__item_box__select_box">
+                                        <select name="category" id="category">
+                                            <option value="">sample</option>
+                                            <option value="">sample</option>
+                                            <option value="">sample</option>
+                                            <option value="">sample</option>
+                                        </select>
+
+                                    </div>
                                 </div>
                                 <div class="p-index-contact__form_box__form__item_box">
                                     <label for="email">EMAIL</label>
@@ -125,7 +143,11 @@
                 </section>
             </div>
         </main>
-        <footer></footer>
+        <footer class="l-footer">
+            <div class="l-footer__inner">
+                <p>&copy;2022 work</p>
+            </div>
+        </footer>
     </body>
 
 </html>

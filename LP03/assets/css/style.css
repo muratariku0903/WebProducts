@@ -284,6 +284,16 @@ button {
   }
 }
 
+.l-footer {
+  width: 100%;
+  height: 31px;
+  background-color: #24292e;
+  color: white;
+}
+.l-footer__inner p {
+  text-align: center;
+}
+
 .c-title {
   font-size: 24px;
   font-weight: bold;
@@ -473,6 +483,11 @@ button {
   }
 }
 @media (min-width: 600px) {
+  .p-index-contact {
+    margin-bottom: 120px;
+  }
+}
+@media (min-width: 600px) {
   .p-index-contact__inner {
     padding-left: 60px;
   }
@@ -530,17 +545,45 @@ button {
   font-size: 14.4px;
 }
 .p-index-contact__form_box__form__item_box input,
-.p-index-contact__form_box__form__item_box textarea {
+.p-index-contact__form_box__form__item_box textarea,
+.p-index-contact__form_box__form__item_box select {
   width: 100%;
 }
 @media (min-width: 600px) {
   .p-index-contact__form_box__form__item_box input,
-.p-index-contact__form_box__form__item_box textarea {
+.p-index-contact__form_box__form__item_box textarea,
+.p-index-contact__form_box__form__item_box select {
     max-width: 723px;
   }
 }
-.p-index-contact__form_box__form__item_box input {
+.p-index-contact__form_box__form__item_box input,
+.p-index-contact__form_box__form__item_box select {
   height: 44px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+.p-index-contact__form_box__form__item_box__select_box {
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .p-index-contact__form_box__form__item_box__select_box {
+    max-width: 723px;
+  }
+}
+.p-index-contact__form_box__form__item_box__select_box::after {
+  position: absolute;
+  display: block;
+  content: "";
+  right: 16px;
+  top: 55%;
+  width: 0;
+  height: 0;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 6px solid black;
+  pointer-events: none;
 }
 .p-index-contact__btn_wrapper {
   margin-top: 30px;
@@ -570,6 +613,13 @@ button {
           transform-origin: 100% 0;
   -webkit-transform: rotate(35deg);
           transform: rotate(35deg);
+}
+
+.tmp {
+  width: 100px;
+  background-color: red;
+  height: 600px;
+  word-wrap: break-word;
 }
 
 .u-vertical-align-middle {

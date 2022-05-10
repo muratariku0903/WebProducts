@@ -75,6 +75,7 @@
 
 .p-index-contact {
     @include mixin.rProp(margin-top, $sp: 70px, $pc: 222px);
+    @include mixin.rProp(margin-bottom, $pc: 120px);
 
     &__inner {
         @include mixin.rPaddingX($pc: 60px);
@@ -96,12 +97,35 @@
             font-size: 14.4px;
         }
         input,
-        textarea {
+        textarea,
+        select {
             width: 100%;
             @include mixin.rProp(max-width, $pc: 723px);
         }
-        input {
+        input,
+        select {
             height: 44px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+    }
+
+    &__form_box__form__item_box__select_box {
+        position: relative;
+        width: 100%;
+        @include mixin.rProp(max-width, $pc: 723px);
+        &::after {
+            position: absolute;
+            display: block;
+            content: "";
+            right: 16px;
+            top: 55%;
+            width: 0;
+            height: 0;
+            border-right: 6px solid transparent;
+            border-left: 6px solid transparent;
+            border-top: 6px solid black;
+            pointer-events: none;
         }
     }
 
@@ -118,4 +142,11 @@
         color: white;
         @include mixin.arrowBtn($x: calc(50% - 50px), $y: calc(50% - 5px), $under: 20px, $oblique: 10px, $color: white);
     }
+}
+
+.tmp {
+    width: 100px;
+    background-color: red;
+    height: 600px;
+    word-wrap: break-word;
 }
