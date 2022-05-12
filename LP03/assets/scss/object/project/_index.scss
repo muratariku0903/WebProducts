@@ -144,9 +144,35 @@
     }
 }
 
-.tmp {
-    width: 100px;
-    background-color: red;
-    height: 600px;
-    word-wrap: break-word;
+.p-index-practice {
+    @include mixin.rPaddingY($pc: 60px);
+    @include mixin.backgroundReleasedFromContainer(black);
+
+    &__inner {
+        position: relative;
+        @include mixin.rProp(height, $pc: 200px);
+        background-color: gray;
+    }
+
+    &__title_wrapper {
+        position: relative;
+        background-color: yellow;
+        z-index: 20;
+    }
+
+    &__title_wrapper__title {
+        font-size: 60px;
+    }
+    
+    &__bg {
+        position: absolute;
+        display: block;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 100px;
+        background-color: red;
+        z-index: 10;
+    }
 }

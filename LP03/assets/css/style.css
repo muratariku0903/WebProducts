@@ -615,11 +615,59 @@ button {
           transform: rotate(35deg);
 }
 
-.tmp {
-  width: 100px;
+.p-index-practice {
+  position: relative;
+}
+@media (min-width: 600px) {
+  .p-index-practice {
+    padding-top: 60px;
+  }
+}
+@media (min-width: 600px) {
+  .p-index-practice {
+    padding-bottom: 60px;
+  }
+}
+.p-index-practice::after {
+  position: absolute;
+  display: block;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  height: 100%;
+  background-color: black;
+  z-index: 9;
+}
+.p-index-practice__inner {
+  position: relative;
+  background-color: gray;
+}
+@media (min-width: 600px) {
+  .p-index-practice__inner {
+    height: 200px;
+  }
+}
+.p-index-practice__title_wrapper {
+  position: relative;
+  background-color: yellow;
+  z-index: 20;
+}
+.p-index-practice__title_wrapper__title {
+  font-size: 60px;
+}
+.p-index-practice__bg {
+  position: absolute;
+  display: block;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100px;
   background-color: red;
-  height: 600px;
-  word-wrap: break-word;
+  z-index: 10;
 }
 
 .u-vertical-align-middle {

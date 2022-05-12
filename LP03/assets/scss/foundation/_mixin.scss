@@ -99,3 +99,20 @@ $breakpoints: (
         transform: rotate(35deg);
     }
 }
+
+
+@mixin backgroundReleasedFromContainer($bg-color) {
+    position: relative;
+    &::after {
+        position: absolute;
+        display: block;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100vw;
+        @include releaseMarginX();
+        height: 100%;
+        background-color: $bg-color;
+        z-index: 9;
+    }
+}
